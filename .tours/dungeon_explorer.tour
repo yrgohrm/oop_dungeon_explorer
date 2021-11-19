@@ -1,0 +1,132 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "dungeon_explorer",
+  "steps": [
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Det här programmet är ett interaktivt spel där en person går runt i en miljö och kan interagera med olika objekt.\r\n\r\nSpelet består av 4 delar, ett spelarobjekt, ett antal olika rum, olika saker som kan finnas i rummen samt ett huvudprogram som sätter ihop allt till en helhet.\r\n\r\nNär du spelar spelet kan du använda dig av \"go to *number*\" och \"use *number*\" för att gå till olika rum respektive använda olika saker. Testa gärna att köra programmet en gång nu. Avsluta genom att skriva \"*exit*\".",
+      "line": 11,
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 1
+        },
+        "end": {
+          "line": 12,
+          "character": 9
+        }
+      }
+    },
+    {
+      "file": "se/yrgo/oop/game/Player.java",
+      "description": "Detta är klassen som representerar en spelare.\r\n\r\nEn spelare har tre *medlemsvariabler*, ett namn, hälsa och vilket rum spelaren befinner sig i för tillfället.",
+      "line": 7
+    },
+    {
+      "file": "se/yrgo/oop/game/Player.java",
+      "description": "Vår Player-klass har en konstruktor som tar spelarens namn och startrummet som argument. I konstruktorn sparar vi undan detta i klassens medlemsvariabel name, currentRoom, samt sätter hälsan till 100.\r\n\r\nNär vi skapar ett nytt Player-objekt kommer alltså namnet vara vårt angivna namn, hälsan vara 100 och rummet, *currentRoom* kommer att vara satt till startRoom.",
+      "line": 12
+    },
+    {
+      "file": "se/yrgo/oop/game/Player.java",
+      "description": "När det gäller vilket rum vår spelare står i vill vi både kunna hämta ut vilket rum den är i, men även kunna sätta ett nytt rum. Det vore tråkigt om vår spelare alltid är kvar i samma rum.",
+      "line": 28
+    },
+    {
+      "file": "se/yrgo/oop/game/Player.java",
+      "description": "Getters och setter är bra för att hämta ut och sätta värden, men det är inte alltid det räcker eller är så tydligt som möjligt. Vi kan ha vilka metoder som helst som gör vad vi vill mer eller mindre.\r\n\r\nFör hälsan gör vi det enkelt och inför två metoder för att öka och minska hälsan med ett givet antal. På så vis blir det tydligt vad som händer och vi kan undvika misstag från programmerarnas sida.",
+      "line": 41
+    },
+    {
+      "file": "se/yrgo/oop/game/Room.java",
+      "description": "Klassen Room beskriver ett rum och består av tre medlemsvariabler: en beskrivning av rummet, en lista av angränsande rum och en lista av de saker som finns i rummet.",
+      "line": 13
+    },
+    {
+      "file": "se/yrgo/oop/game/Room.java",
+      "description": "Även för Room har vi en enda konstruktor som tar beskrivningen som argument. När vi skapar ett nytt rum tilldelar vi connectedRooms och things var sin ny, tom, ArrayList. Vi behöver alltså listor (objekt) att stoppa våra rum och saker i, men från början är de tomma.",
+      "line": 22
+    },
+    {
+      "file": "se/yrgo/oop/game/Room.java",
+      "description": "Vi behöver självklart kunna koppla ihop rum med varandra. Det gör vi genom addConnectedRoom, men vi ser till att först kontrollera att vi inte lägger till samma rum flera gånger. Detta gör att vi även kan se till att alla rum sitter ihop åt båda håll på ett enkelt sätt.",
+      "line": 29
+    },
+    {
+      "file": "se/yrgo/oop/game/things/Thing.java",
+      "description": "För att representera saker använder vi ett interface. Hade vi gjort alla olika saker som en enda klass hade den blivit väldigt komplicerad. Genom att använda ett interface kan vi skapa många vitt skilda saker att ha i våra rum, men vi möjliggör ändå att vi har en lista med dem allihopa.",
+      "line": 8
+    },
+    {
+      "file": "se/yrgo/oop/game/Room.java",
+      "description": "Notera hur vi här i Room-klassen har en lista med Thing. Typen är interfacet. Vi vet därmed att vi kan använda alla metoder som finns deklarerade i Thing på dessa objekt i den här listan - oavsett vilken som är den konkreta klassen.",
+      "line": 16
+    },
+    {
+      "file": "se/yrgo/oop/game/things/Thing.java",
+      "description": "Vi har två metoder i vårt interface. En metod som ger oss sakens beskrivning, och en metod som låter oss använda saken.\r\n\r\nVi skickar med spelaren som argument till `use()` eftersom det låter oss skada användaren samt komma åt rummet och manipulera det.",
+      "line": 7,
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 1
+        },
+        "end": {
+          "line": 8,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "se/yrgo/oop/game/things/CoffePot.java",
+      "description": "Till exempel här i klassen CoffePot. Den implementerar Thing och i `use()`-metoden skriver vi ut vad som händer och minskar spelarens hälsa med ett.",
+      "line": 21
+    },
+    {
+      "file": "se/yrgo/oop/game/things/BoringThing.java",
+      "description": "I klassen BoringThing händer det å andra sidan inte speciellt mycket.\r\n\r\nTvå olika klasser, två olika implementationer, men båda är av interfacet Thing och kan användas som en sådan.",
+      "line": 18
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Nu är det dags att sätta ihop våra rum med våra saker, skapa en spelare och börja spela!\r\n\r\nDet första vi gör i vår main-metod är att skapa en scanner så vi kan läsa in kommandon från vår spelare samt anropa metoden `createMap()` som skapar våra rum och alla saker där i. Metoden returnerar vilket rum den vill att vi börjar i.",
+      "line": 13
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "I `createMap()` skapar vi tre stycken rum fyllda med allehanda ting. Vi skapar alltså tre olika objekt alla av typen Room.\r\n\r\nVi skapar även ett antal olika saker som vi placerar i dessa rum. De är av många olika konkreta klasser som `CoffePot` och `Flower`, men samtliga implementerar interfacet `Thing` och är därmed saker vi kan ha i våra rum.",
+      "line": 57
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Allra sist i metoden returnerar vi det rum som vi vill att användaren skall starta i.",
+      "line": 71
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Tillbaka i main-metoden frågar vi nu användaren om deras namn och skapar ett Player-objekt som startar i det föreslagna rummet. Vi är nu redo att börja spela.",
+      "line": 19
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Här ovan har vi själva huvudloopen i spelet. Den här går vi igenom varje gång spelaren skriver ett kommando.\r\n\r\nVi fortsätter spela så länge spelaren har hälsa kvar.\r\n\r\nFörst skriver vi ut all info om det nuvarande rummet.\r\nSedan tar vi in ett kommando från användaren och försöker utföra det.\r\nSlutligen så låter vi spelaren förlora ett liv för att simulera att de blir tröttare och tröttare.",
+      "line": 31
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "I `printRoomInfo()` skriver vi ut information om rummet spelaren befinner sig i. Vad det heter, vilka rum man kan komma till och inte minst vilka saker som finns där.",
+      "line": 136
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "I `doAction()` läser vi in ett kommando från användaren och försöker agera på det. Vi går antingen till ett nytt rum, använder en sak eller avslutar spelet.\r\n\r\nVi fångar ett undantag här för att hantera om användaren skriver in ett halvkorrekt kommando som t.ex. \"go to sksks\". Hanteringen av inmatning här är tämligen bristfällig, men enkel.",
+      "line": 97
+    },
+    {
+      "file": "se/yrgo/oop/game/App.java",
+      "description": "Nu har du fått en snabb genomgång av alla de delar som utgör programmet. \r\n\r\nKan du nu ta och lägga till en egen klass som är en Thing och se till att den dyker upp i något av rummen? Kan du lägga till ett nytt eget rum?",
+      "line": 11
+    }
+  ],
+  "isPrimary": true
+}
